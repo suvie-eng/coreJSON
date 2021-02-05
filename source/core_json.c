@@ -252,7 +252,7 @@ static bool skipUTF8( const char * buf,
     if( *start < max )
     {
         /* an ASCII byte */
-        if( buf[ *start ] >= '\0' )
+        if( (signed char)buf[ *start ] >= '\0' )
         {
             *start += 1U;
             ret = true;
@@ -442,7 +442,7 @@ static bool skipEscape( const char * buf,
 
     if( ( i < ( max - 1U ) ) && ( buf[ i ] == '\\' ) )
     {
-        char c = buf[ i + 1U ];
+        signed char c = buf[ i + 1U ];
 
         switch( c )
         {
